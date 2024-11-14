@@ -49,22 +49,31 @@ const continueMovies = [
 const topMovies = [
   {
     src: "https://images.plex.tv/photo?size=large-1280&url=https%3A%2F%2Fmetadata-static.plex.tv%2F6%2Fgracenote%2F6712d44cade77919f9365b7626aa37d7.jpg",
+    hover:
+      "https://assets.kompasiana.com/items/album/2023/07/19/suzume-64b75bf3a0688f4fad71e093.jpg?t=o&v=740&x=416",
     title: "suzume",
     rating: "",
-    episodes: "",
-    genres: ["", "", ""],
+    rate: "13+",
+    episodes: "12 Episode",
+    genres: ["Anime", "Psyhic", "Anime"],
   },
   {
     src: "https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/akurat/images/2023/03/big/img_64195ea53c50e0-97937540-78580199.JPG",
+    hover:
+      "https://cdn.idntimes.com/content-images/duniaku/post/20220609/jurassic-world-dominion-af707e3152e23a721ab7480014d18ec0.jpg",
     title: "jurrasic",
     rating: "",
-    episodes: "",
-    genres: ["", "", ""],
+    rate: "13+",
+    episodes: "12 Episode",
+    genres: ["Action", "Thriller", "Movies"],
   },
   {
     src: "https://m.media-amazon.com/images/M/MV5BODRlNTY5ZjktZjE0Ni00YjZhLTk3NTItYzk0ZjYxN2QxMWEzXkEyXkFqcGdeQXVyMjMwNDgzNjc@._V1_.jpg",
+    hover:
+      "https://thumbnails.cbsig.net/CBS_Production_Entertainment_VMS/2022/04/14/2023121475896/STH2_SAlone_16_9_1920x1080_1322128_1920x1080.jpg",
     title: "sonic",
     rating: "",
+    rate: "SU",
     episodes: "",
     genres: ["", "", ""],
   },
