@@ -2,6 +2,9 @@
   box-sizing: border-box;
 }
 
+body {
+  overflow-x: hidden;
+}
 .section-1 {
   /* height: 512px; */
   width: 100%;
