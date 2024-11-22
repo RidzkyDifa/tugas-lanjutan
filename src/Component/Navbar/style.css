@@ -35,11 +35,22 @@ li a {
   display: block;
   color: white;
   font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+li a:hover {
+  transform: scale(1.05);
 }
 
 .logo {
   margin-left: 10px;
-  height: 44px;
+  height: 64px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .mini-logo {

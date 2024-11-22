@@ -1,9 +1,14 @@
 .movie-grid {
   display: flex;
   gap: 32px;
-  overflow-x: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
   scroll-behavior: smooth;
-  width: 100%;
+  width: 109%;
+  position: relative;
+  height: 490px;
+  padding-left: 100px;
+  margin-left: -100px;
 }
 
 .movie-grid::-webkit-scrollbar {
