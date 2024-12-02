@@ -377,7 +377,19 @@ body {
   width: 100%;
 }
 
-.auth-form {
+/* .auth-form {
+  height: auto;
+  width: 529px;
+  background-color: rgba(25, 26, 28, 0.9);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  padding: 40px;
+  margin: 100px 0;
+} */
+
+.login-form {
   height: auto;
   width: 529px;
   background-color: rgba(25, 26, 28, 0.9);
