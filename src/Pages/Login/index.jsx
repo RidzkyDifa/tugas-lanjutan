@@ -2,63 +2,39 @@ import { useNavigate } from "react-router-dom";
 import Logos from "../../Asset/logo-chill.png";
 import Google from "../../Asset/google.png";
 import { useState, useEffect } from "react";
-import { getData } from "../../Service/API";
+import useUserStore from "../../Service/Zustand/UserStore";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [list, setList] = useState([]);
+  const { currentUser, fetchUsers, users, loginUser } = useUserStore();
+  const [loginData, setLoginData] = useState({ username: "", password: "" });
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    console.log("handleLogin dipanggil");
-    try {
-      const users = await getData();
-      setList(users);
-      console.log("Data dari API:", users);
-      console.log("Username Input:", username);
-      console.log("Password Input:", password);
-
-      if (!users || !users.length) {
-        alert("Tidak ada data user");
-        return;
-      }
-
+  const handleLogin = async () => {
+    const { username, password } = loginData;
+    if (username && password) {
+      loginUser(username, password);
       const user = users.find(
-        (item) =>
-          item.username.toLowerCase() === username.toLowerCase() &&
-          item.password === password
+        (user) => user.username === username && user.password === password
       );
-
       if (user) {
-        alert("Login berhasil");
+        alert("Login Berhasil");
         navigate("/home");
       } else {
         alert("Username atau Password Salah");
-        setUsername("");
-        setPassword("");
+        setLoginData({ username: "", password: "" });
       }
-    } catch (error) {
-      console.error("Error saat login:", error);
+    } else {
+      alert("Harap isi Username dan Passowrd");
     }
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const users = await getData();
-        console.log("Data yang berhasil diambil:", users);
-      } catch (error) {
-        console.error("Error saat mengambil data:", error);
-      }
-    };
-    fetchData();
-  }, []);
+    fetchUsers();
+  }, [fetchUsers]);
 
-  console.log(list);
+  console.log(currentUser);
   return (
-    <form onSubmit={handleLogin} className="login-form">
+    <form className="login-form">
       <div className="head-login">
         <img src={Logos} alt="logo" />
         <h2>Masuk</h2>
@@ -69,8 +45,10 @@ const Login = () => {
         className="input-area"
         type="text"
         placeholder="Masukan username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        value={loginData.username}
+        onChange={(e) =>
+          setLoginData({ ...loginData, username: e.target.value })
+        }
         required
       />
       <label className="input-title">Kata Sandi</label>
@@ -78,8 +56,10 @@ const Login = () => {
         className="input-area"
         type="password"
         placeholder="Masukan Kata sandi"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={loginData.password}
+        onChange={(e) =>
+          setLoginData({ ...loginData, password: e.target.value })
+        }
         required
       />
       <div className="other-option">
@@ -93,7 +73,12 @@ const Login = () => {
           Lupa kata sandi?
         </p>
       </div>
-      <button className="login" style={{ cursor: "pointer" }} type="submit">
+      <button
+        className="login"
+        style={{ cursor: "pointer" }}
+        type="submit"
+        onClick={handleLogin}
+      >
         Masuk
       </button>
       <p className="or">Atau</p>
